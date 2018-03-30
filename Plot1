@@ -1,2 +1,28 @@
-## Create the histogram
-  hist(data$Global_active_power, main="Global Active Power", xlab = "Global Active Power (kilowatts)", col="red")
+## Reading and Loading data
+household <- read.table("household_power_consumption.txt", header = TRUE, sep = ";", na.strings = "?")
+
+#filter the dates required
+household <- household[household$Date %in% c("1/2/2007","2/2/2007"),]
+
+#Create the Date/Time variable
+DateTime <- strptime(paste(household$Date, household$Time), "%d/%m/%Y %H:%M:%S")
+
+#add the DateTime column into household
+
+household <- cbind(DateTime, household)
+
+#Drop the Date and Time column
+
+household <- household[, !names(household) %in% c('Date', 'Time')]
+
+# Check the data head
+
+head(household, 2)
+
+
+## Plot the histogram plot1.png
+hist(household$Global_active_power, col = "red", main = "Global Active Power", xlab = "Global Active Power (kilowatts)")
+
+#Save the plot and close the device
+dev.copy(png, "plot1.png")
+dev.off()
