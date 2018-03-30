@@ -25,4 +25,4 @@ hist(household$Global_active_power, col = "red", main = "Global Active Power", x
 
 #Save the plot and close the device
 dev.copy(png, "plot1.png")
-dev.off()
+dev.off() 
