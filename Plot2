@@ -3,4 +3,4 @@ with(household, plot(DateTime, Global_active_power, type = "l", ylab = "Global A
   
 ## Copy and save the plot
 dev.copy(png, "plot2.png")
-dev.off()
+dev.off() 
